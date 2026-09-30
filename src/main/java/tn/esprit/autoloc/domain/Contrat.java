@@ -2,6 +2,7 @@ package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.*;
 import java.math.*;
 import java.time.*;
 
@@ -25,4 +26,10 @@ public class Contrat {
 
     @Column(nullable = false)
     private boolean valide;
+
+    @OneToOne(mappedBy = "contrat")
+    private Reservation reservation;
+
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Paiement> paiements = new ArrayList<>();
 }
