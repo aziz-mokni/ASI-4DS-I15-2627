@@ -1,0 +1,13 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: autoloc_db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - autoloc-mysql-data:/var/lib/mysql
+
+volumes:
+  autoloc-mysql-data:
