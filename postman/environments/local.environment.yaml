@@ -1,0 +1,6 @@
+name: local
+values:
+  - key: asiApiUrl
+    value: 'http://localhost:8080/api'
+  - key: agenceId
+    value: ''

@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{asiApiUrl}}/agences"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"nom": "Agence test", "ville": "Tunis", "adresse": "2 Rue X", "telephone": "70000000"}'
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Statut 201", () => {
+          pm.response.to.have.status(201);
+      });
+      pm.environment.set("agenceId", pm.response.json().idAgence);
+    language: text/javascript
+order: 4000

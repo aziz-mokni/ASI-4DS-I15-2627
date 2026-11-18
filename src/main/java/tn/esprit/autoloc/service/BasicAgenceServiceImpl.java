@@ -1,6 +1,7 @@
 package tn.esprit.autoloc.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Fallback;
 import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.Utils;
 import tn.esprit.autoloc.domain.Agence;
@@ -10,6 +11,7 @@ import tn.esprit.autoloc.repository.IAgenceRepository;
 import java.util.List;
 
 @Service
+@Fallback
 @RequiredArgsConstructor
 public class BasicAgenceServiceImpl implements IAgenceService {
 

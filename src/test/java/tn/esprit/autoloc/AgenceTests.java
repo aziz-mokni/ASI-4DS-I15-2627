@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest
-public class AgenceTests {
+class AgenceTests {
     @Autowired
     private AgenceRepositoryMock basicAgenceRepository;
 
@@ -32,7 +32,7 @@ public class AgenceTests {
     private IAgenceService agenceService;
 
     @Test
-    public void createAgence() {
+    void createAgence() {
         Agence agence = new Agence();
         agence.setNom("Agence service");
         agence.setVille("Sousse");
@@ -45,27 +45,27 @@ public class AgenceTests {
     }
 
     @Test
-    public void basicAddAgence() {
+    void basicAddAgence() {
         addAgence(basicAgenceRepository);
     }
 
     @Test
-    public void fullAddAgence() {
+    void fullAddAgence() {
         addAgence(fullAgenceRepository);
     }
 
     @Test
-    public void basicLoadAgence() {
+    void basicLoadAgence() {
         loadAgence(basicAgenceRepository, "CrudRepository (basic)");
     }
 
     @Test
-    public void fullLoadAgence() {
+    void fullLoadAgence() {
         loadAgence(fullAgenceRepository, "JpaRepository (full)");
     }
 
     @Test
-    public void loadSortedAgences() {
+    void loadSortedAgences() {
         StringBuilder sb = new StringBuilder();
         for (Agence agence : fullAgenceRepository.findAll(Sort.by(Sort.Direction.DESC, "idAgence"))) {
             sb.append("\n").append(agence.getIdAgence()).append(" | ").append(agence.getNom())
@@ -76,7 +76,7 @@ public class AgenceTests {
     }
 
     @Test
-    public void loadPagedAgences() {
+    void loadPagedAgences() {
         StringBuilder sb = new StringBuilder();
         Pageable pageable = PageRequest.of(0, 2, Sort.by(Sort.Direction.DESC, "idAgence"));
         Page<Agence> page;

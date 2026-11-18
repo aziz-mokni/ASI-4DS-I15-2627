@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{asiApiUrl}}/agences/{{agenceId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"nom": "Agence modifiee", "ville": "Sfax", "adresse": "3 Rue Y", "telephone": "74000000"}'
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Statut 200", () => {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+order: 6000
